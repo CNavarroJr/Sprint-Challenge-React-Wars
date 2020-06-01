@@ -1,17 +1,18 @@
 import React from "react";
 
 
-const StarwarsInfo = (props) => {
+const StarwarsInfo = props => {
 
-  const { character } = props;
+  const { results } = props;
+  // const { characters } = props;
 
   return (
-    <div>
-      <h1>Name: {character.name}</h1>
-      <p>Height: {character.height}</p> 
-      <p>Mass: {character.mass}</p>
-      <p>Hair Color: {character.hair_color}</p>
-      <p>Skin Color: {character.skin_color}</p>
+    <div className="card-list">
+      <h1>{results.name}</h1>
+      <p>{results.height}</p> 
+      <p>{results.mass}</p>
+      <p>{results.hair_color}</p>
+      <p>{results.skin_color}</p>
     </div>
   )
 }

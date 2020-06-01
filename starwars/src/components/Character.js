@@ -6,28 +6,31 @@ import StarwarsInfo from "./StarwarsInfo";
 
 const Character = () => {
 
-  const [character, setCharacter] = useState([])
+  const [characters, setCharacters] = useState([]);
 
   useEffect(() => {
     axios
-    .get("https://swapi.py4e.com/api/people/1")
+    .get("https://swapi.py4e.com/api/people")
     
     .then(response => {
 
-      setCharacter(response.data);
-      console.log("response", response.data)
-      
+      console.log(response);
+      setCharacters(response.data);
     })
-    .catch(error => 
-      console.log("Error!", error));
+    .catch(error => console.log("Error!", error));
 
   }, []);
 
-  return(
-    <div>
-      <StarwarsInfo character={character}/>
+  return (
+
+    <div className="cards">
+
+      {characters.map(results => (
+        <StarwarsInfo results={results}/>
+      ))} 
+
     </div>
-  )
-}
+  );
+};
 
 export default Character;
